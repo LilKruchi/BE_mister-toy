@@ -48,10 +48,12 @@ function save(toy) {
     if (toy._id) {
         const toyToUpdate = toys.find(currToy => currToy._id === toy._id)
         if (!toyToUpdate) return Promise.reject('No such toy')
-
+        console.log(toy);
+        if (toy.inStock === 'false') toyToUpdate.inStock = false
+        else toyToUpdate.inStock = 'on'
         toyToUpdate.name = toy.name
         toyToUpdate.price = toy.price
-        toyToUpdate.inStock = toy.inStock
+        // toyToUpdate.inStock = toy.inStock
         toyToUpdate.img = toy.img
         toyToUpdate.labels = toy.labels
         toyToUpdate.createdAt = new Date().getTime()

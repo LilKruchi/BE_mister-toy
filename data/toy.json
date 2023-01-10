@@ -1,8 +1,26 @@
 [
   {
-    "createdAt": 1673369849802,
+    "_id": "KloOr",
+    "name": "test",
+    "price": 50,
+    "img": "",
+    "labels": [],
+    "createdAt": 1673394480593,
+    "inStock": false
+  },
+  {
+    "_id": "Q1KB3",
+    "name": "Placeholder",
+    "price": 50,
+    "img": "",
+    "labels": [],
+    "createdAt": 1673394312998,
+    "inStock": "false"
+  },
+  {
+    "createdAt": 1673394477173,
     "img": "https://www.lego.com/cdn/cs/set/assets/bltaf4abeb820733858/75159_alt1.jpg",
-    "inStock": true,
+    "inStock": "on",
     "labels": [
       "Box game",
       "Art"
@@ -12,9 +30,9 @@
     "_id": "TulyPX"
   },
   {
-    "createdAt": 1673369748945,
+    "createdAt": 1673392365147,
     "img": "https://upload.wikimedia.org/wikipedia/en/a/a7/Buzz_Lightyear_of_star_command_poster.jpg",
-    "inStock": true,
+    "inStock": "on",
     "labels": [
       "Box game",
       "Battery Powered"
@@ -24,9 +42,9 @@
     "_id": "MuVHqT"
   },
   {
-    "createdAt": 1673368875483,
+    "createdAt": 1673393051908,
     "img": "https://img.zap.co.il/pics/1/8/4/0/62690481c.gif",
-    "inStock": false,
+    "inStock": "on",
     "labels": [
       "On wheels"
     ],
