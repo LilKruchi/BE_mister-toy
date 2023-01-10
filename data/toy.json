@@ -1,38 +1,37 @@
 [
-    {
-        "createdAt": 0,
-        "img": "https://www.lego.com/cdn/cs/set/assets/bltaf4abeb820733858/75159_alt1.jpg",
-        "inStock": true,
-        "labels": [],
-        "name": "Lego, Deathstar",
-        "price": 110,
-        "_id": "TulyPX"
-    },
-    {
-        "createdAt": 0,
-        "img": "https://upload.wikimedia.org/wikipedia/en/a/a7/Buzz_Lightyear_of_star_command_poster.jpg",
-        "inStock": true,
-        "labels": [],
-        "name": "Buzzlightyear",
-        "price": 50,
-        "_id": "MuVHqT"
-    },
-    {
-        "createdAt": 0,
-        "img": "https://image.ceneostatic.pl/data/products/44837026/i-lego-technic-42056-porsche-911-gt3-rs.jpg",
-        "inStock": true,
-        "labels": [],
-        "name": "Lego, Porsche 911 GT3",
-        "price": 90,
-        "_id": "M3ux6E"
-    },
-    {
-        "createdAt": 0,
-        "img": "https://img.zap.co.il/pics/1/8/4/0/62690481c.gif",
-        "inStock": false,
-        "labels": [],
-        "name": "Lego, R2D2",
-        "price": 150,
-        "_id": "wu8Fqa"
-    }
+  {
+    "createdAt": 1673369849802,
+    "img": "https://www.lego.com/cdn/cs/set/assets/bltaf4abeb820733858/75159_alt1.jpg",
+    "inStock": true,
+    "labels": [
+      "Box game",
+      "Art"
+    ],
+    "name": "Lego, Deathstar",
+    "price": 110,
+    "_id": "TulyPX"
+  },
+  {
+    "createdAt": 1673369748945,
+    "img": "https://upload.wikimedia.org/wikipedia/en/a/a7/Buzz_Lightyear_of_star_command_poster.jpg",
+    "inStock": true,
+    "labels": [
+      "Box game",
+      "Battery Powered"
+    ],
+    "name": "Buzzlightyear",
+    "price": 50,
+    "_id": "MuVHqT"
+  },
+  {
+    "createdAt": 1673368875483,
+    "img": "https://img.zap.co.il/pics/1/8/4/0/62690481c.gif",
+    "inStock": false,
+    "labels": [
+      "On wheels"
+    ],
+    "name": "Lego, R2D2 ",
+    "price": 150,
+    "_id": "wu8Fqa"
+  }
 ]

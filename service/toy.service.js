@@ -9,8 +9,30 @@ module.exports = {
     remove
 }
 
-function query() {
+function query(filterBy) {
+    // console.log(filterBy);
     let filteredToys = toys
+    if (filterBy.name) {
+        const regex = new RegExp(filterBy.name, 'i')
+        filteredToys = filteredToys.filter(toy => regex.test(toy.name))
+    }
+    if (filterBy.price) {
+        filteredToys = filteredToys.filter(toy => toy.price >= filterBy.price)
+    }
+    if (!!filterBy.inStock) {
+
+        if (filterBy.inStock === 'true') {
+            filteredToys = filteredToys.filter(toy => toy)
+        } else {
+            filteredToys = filteredToys.filter(toy => toy.inStock)
+        }
+    }
+    if (filterBy.labels) {
+        if (filterBy.label === ['']) console.log('heee');
+        filterBy.labels = filterBy.labels.split(',')
+        console.log(filterBy.labels);
+        filteredToys = filteredToys.filter(toy => toy.labels.some(label => filterBy.labels.includes(label)))
+    }
     return Promise.resolve(filteredToys)
 }
 

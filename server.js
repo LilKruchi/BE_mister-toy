@@ -1,14 +1,26 @@
 const express = require('express')
-const app = express()
+const cors = require('cors')
 const toyService = require('./service/toy.service.js')
+const app = express()
 const PORT = 3030
 
 app.use(express.static('public'))
+
+const corsOptions = {
+    origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000'],
+    credentials: true
+}
+app.use(cors(corsOptions))
+
 app.use(express.json())
+
+
 
 // query
 app.get('/api/toy', (req, res) => {
-    toyService.query()
+    const filterBy = req.query
+    // console.log(filterBy);
+    toyService.query(filterBy)
         .then(toys => {
             res.send(toys)
         })
@@ -35,6 +47,7 @@ app.put('/api/toy', (req, res) => {
 
 // create
 app.post('/api/toy', (req, res) => {
+    console.log('creating');
     const toy = req.body
     console.log(toy);
     toyService.save(toy)
@@ -63,6 +76,7 @@ app.get('/api/toy/:toyId', (req, res) => {
 
 // remove
 app.delete('/api/toy/:toyId', (req, res) => {
+    console.log('removing');
     const { toyId } = req.params
     toyService.remove(toyId)
         .then(toy => {
