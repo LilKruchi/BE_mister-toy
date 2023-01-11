@@ -1,5 +1,7 @@
 const express = require('express')
 const cors = require('cors')
+const multer = require('multer')
+const upload = multer({ dest: 'public/uploads/' })
 const toyService = require('./service/toy.service.js')
 const app = express()
 const PORT = 3030
@@ -36,7 +38,7 @@ app.put('/api/toy', (req, res) => {
     // console.log(toy);
     toyService.save(toy)
         .then(savedToy => {
-            console.log(savedToy);
+            // console.log(savedToy);
             res.send(savedToy)
         })
         .catch(err => {
@@ -49,10 +51,10 @@ app.put('/api/toy', (req, res) => {
 app.post('/api/toy', (req, res) => {
     console.log('creating');
     const toy = req.body
-    console.log(toy);
+    // console.log(toy);
     toyService.save(toy)
         .then(savedToy => {
-            console.log(savedToy);
+            // console.log(savedToy);
             res.send(savedToy)
         })
         .catch(err => {
@@ -87,5 +89,11 @@ app.delete('/api/toy/:toyId', (req, res) => {
             res.status(400).send('Cannot remove toy')
         })
 })
+
+// app.get('/api/toy/upload', (req, res) => {
+//     const { image } = req.files
+//     console.log(image);
+//     res.send('hello')
+// })
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}: http://localhost:${PORT}/`))

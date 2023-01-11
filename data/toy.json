@@ -1,23 +1,5 @@
 [
   {
-    "_id": "KloOr",
-    "name": "test",
-    "price": 50,
-    "img": "",
-    "labels": [],
-    "createdAt": 1673394480593,
-    "inStock": false
-  },
-  {
-    "_id": "Q1KB3",
-    "name": "Placeholder",
-    "price": 50,
-    "img": "",
-    "labels": [],
-    "createdAt": 1673394312998,
-    "inStock": "false"
-  },
-  {
     "createdAt": 1673394477173,
     "img": "https://www.lego.com/cdn/cs/set/assets/bltaf4abeb820733858/75159_alt1.jpg",
     "inStock": "on",

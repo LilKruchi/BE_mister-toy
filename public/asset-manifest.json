@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.99299687.css",
+    "main.js": "/static/js/main.a27592ea.js",
+    "static/media/Rubik-Regular.ttf": "/static/media/Rubik-Regular.705a89f52bdf93b960ed.ttf",
+    "static/media/Rubik-Bold.ttf": "/static/media/Rubik-Bold.b24c64f715ba25a6e7f5.ttf",
+    "index.html": "/index.html",
+    "main.99299687.css.map": "/static/css/main.99299687.css.map",
+    "main.a27592ea.js.map": "/static/js/main.a27592ea.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.99299687.css",
+    "static/js/main.a27592ea.js"
+  ]
+}
