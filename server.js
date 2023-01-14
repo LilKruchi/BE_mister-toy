@@ -1,99 +1,54 @@
 const express = require('express')
+const cookieParser = require('cookie-parser')
 const cors = require('cors')
-const multer = require('multer')
-const upload = multer({ dest: 'public/uploads/' })
-const toyService = require('./service/toy.service.js')
-const app = express()
-const PORT = 3030
+const path = require('path')
 
+const app = express()
+const http = require('http').createServer(app)
+
+// Express App Config
+app.use(cookieParser())
+app.use(express.json())
 app.use(express.static('public'))
 
-const corsOptions = {
-    origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000'],
-    credentials: true
+if (process.env.NODE_ENV === 'production') {
+    // Express serve static files on production environment
+    app.use(express.static(path.resolve(__dirname, 'public')))
+} else {
+    // Configuring CORS
+    const corsOptions = {
+        // Make sure origin contains the url your frontend is running on
+        origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000'],
+        credentials: true
+    }
+    app.use(cors(corsOptions))
 }
-app.use(cors(corsOptions))
 
-app.use(express.json())
+if (process.env.NODE_ENV = 'production') {
+    app.use(express.static(path.resolve(__dirname, 'public')))
+} else {
 
+    const corsOptions = {
+        origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000'],
+        credentials: true
+    }
+    app.use(cors(corsOptions))
+}
 
+const toyRouter = require('./api/toy/toy.routes')
+const userRouter = require('./api/user/user.routes')
 
-// query
-app.get('/api/toy', (req, res) => {
-    const filterBy = req.query
-    // console.log(filterBy);
-    toyService.query(filterBy)
-        .then(toys => {
-            res.send(toys)
-        })
-        .catch(err => {
-            console.log('Error:', err)
-            res.status(400).send('cannot get toys')
-        })
+app.use('/api/toy', toyRouter)
+app.use('/api/user', userRouter)
+
+app.get('/**', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-// update
-app.put('/api/toy', (req, res) => {
-    const toy = req.body
-    // console.log(toy);
-    toyService.save(toy)
-        .then(savedToy => {
-            // console.log(savedToy);
-            res.send(savedToy)
-        })
-        .catch(err => {
-            console.log('Error:', err)
-            res.status(400).send('cannot update toy')
-        })
+
+// const logger = require('./services/logger.service')
+const port = process.env.PORT || 3030
+
+http.listen(port, () => {
+    // logger.info('Server is running on port: ' + port)
 })
-
-// create
-app.post('/api/toy', (req, res) => {
-    console.log('creating');
-    const toy = req.body
-    // console.log(toy);
-    toyService.save(toy)
-        .then(savedToy => {
-            // console.log(savedToy);
-            res.send(savedToy)
-        })
-        .catch(err => {
-            console.log('Error:', err)
-            res.status(400).send('cannot create toy')
-        })
-})
-
-// read
-app.get('/api/toy/:toyId', (req, res) => {
-    const { toyId } = req.params
-    toyService.get(toyId)
-        .then(toy => {
-            res.send(toy)
-        })
-        .catch(err => {
-            console.log('Error:', err)
-            res.status(400).send('Cannot find toy')
-        })
-})
-
-// remove
-app.delete('/api/toy/:toyId', (req, res) => {
-    console.log('removing');
-    const { toyId } = req.params
-    toyService.remove(toyId)
-        .then(toy => {
-            res.send('Removed')
-        })
-        .catch(err => {
-            console.log('Error:', err)
-            res.status(400).send('Cannot remove toy')
-        })
-})
-
-// app.get('/api/toy/upload', (req, res) => {
-//     const { image } = req.files
-//     console.log(image);
-//     res.send('hello')
-// })
-
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}: http://localhost:${PORT}/`))
